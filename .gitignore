@@ -2,3 +2,16 @@ Introduction_to_Generative_AI_Foundations%20Videos/
 Introduction_to_Generative_AI_Foundations%20Subtitles/
 Generative_AI_Overview%20Subtitles/
 Generative_AI_Overview%20Videos/
+Applications_of_Generative_AI%20Subtitles/
+Applications_of_Generative_AI%20Videos/
+
+Exercise/
+
+AGENTS.md
+
+# Local Python and Jupyter state
+.venv/
+.env
+.ipynb_checkpoints/
+__pycache__/
+*.py[cod]
