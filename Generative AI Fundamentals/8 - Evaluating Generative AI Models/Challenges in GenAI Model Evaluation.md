@@ -1,0 +1,21 @@
+# Challenges in GenAI Model Evaluation
+
+Evaluating generative AI (GenAI) models is a critical, yet profoundly challenging, aspect of AI engineering. Unlike traditional machine learning, where outputs can be compared against a single correct answer, GenAI models produce novel, open-ended content, making their assessment fundamentally different and more complex.
+
+The evaluation of generative AI models presents unique hurdles that distinguish it significantly from traditional machine learning model evaluation. These key challenges stem from the inherent nature of how these models operate and the tasks they are designed to perform.
+
+## Core Challenges
+
+* **Open-Ended Outputs:** Traditional ML tasks often have a single, correct answer. GenAI models, however, produce a wide range of plausible, open-ended responses. For example, when evaluating a generated poem, there is no single "correct" version. This makes it impossible to create an exhaustive list of expected outputs for comparison.
+* **Inherent Complexity of Tasks:** GenAI tackles inherently complex problems such as generating mathematical proofs, writing code, or creating fiction. Evaluating these sophisticated outputs often requires deep human expertise, nuanced reasoning, and thorough fact-checking, making the process highly time-consuming.
+* **Probabilistic Nature:** The models generate responses based on probabilities, which can lead to inconsistency across different runs even with the same input. A thorough evaluation may require running the model multiple times to assess the range of potential outputs, which drives up computational costs.
+* **Underinvestment in Evaluation:** Despite its importance, systematic evaluation can be under-resourced when time and budget are tight. This often leads teams to rely on ad-hoc methods like word-of-mouth or simply "eyeballing" results, which increases the risk of deploying a flawed or unreliable model.
+* **Prompt Sensitivity:** Model performance can be highly sensitive to minor variations in input prompts. Small changes in wording can drastically alter the output, making consistent and repeatable evaluation difficult. This problem is amplified in systems where the output of one GenAI model becomes the input for another.
+
+## Conclusion
+
+Despite these difficulties, it is still possible to utilize specific methods to effectively evaluate GenAI models. Evaluating GenAI models is uniquely challenging due to their open-ended outputs, probabilistic nature, and sensitivity to prompts, requiring methods beyond traditional ML accuracy metrics.
+
+
+
+Evaluating generative AI models is a critical yet profoundly challenging aspect of AI engineering, distinguishing it significantly from traditional machine learning model evaluation. Key challenges include open-ended outputs. Unlike traditional ML tasks, generative AI produces open-ended responses. There isn't a single correct answer, making it impossible to curate an exhaustive list of expected outputs for comparison. For example, evaluating a generated poem. Inherent complexity of tasks. Generative AI tackles inherently complex problems, such as mathematical proofs, cogeneration, creative writing. Now evaluating these sophisticated outputs often requires deep human expertise, reasoning, and fact checking, making the process highly time consuming. Probabilistic nature, models generate responses based on probabilities, leading to inconsistency across runs. Thus, evaluations can involve running the model multiple times, driving up cost. Under investment in evaluation. Despite its importance, there can be a tendency to underinvest in systematic evaluation when resources and time are tight. Often leading teams to rely on ad hoc methods like word of mouth or eyeballing results, increasing deployment risks. Prompt sensitivity. Models can be highly sensitive to minor variations in prompts, meaning small changes can drastically alter performance and make consistent evaluation difficult. Since model inputs can be the outputs of other GenAI models, this problem can be amplified. But despite these difficulties, it's still possible to utilize specific evaluation methods when using GenAI.
