@@ -1,0 +1,7 @@
+This module introduces essential techniques for evaluating Generative AI models. You'll learn how to measure performance for various tasks, from simple string comparison with Exact Match to assessing lexical overlap with ROUGE. The module also covers more advanced methods like measuring semantic similarity with embeddings, testing functional correctness for code generation, and even using another large language model as a sophisticated judge based on a custom rubric. This toolkit is crucial for understanding and improving your models.
+
+Key Takeaways
+Evaluation techniques range from simple, strict methods like Exact Match for single-answer tasks to more flexible lexical methods like ROUGE that measure word overlap for summarization.
+For tasks where meaning matters more than specific words, Semantic Similarity uses vector embeddings and cosine similarity to compare how close two pieces of text are conceptually.
+Evaluating generated code requires checking its Functional Correctness by running it against unit tests, with metrics like Pass@k measuring if at least one of several attempts is successful.
+For complex or subjective evaluations, the LLM-as-a-Judge pattern uses another powerful model with a detailed rubric to provide a nuanced score and rationale.
