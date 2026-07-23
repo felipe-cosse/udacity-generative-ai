@@ -1,0 +1,33 @@
+Generative AI presents a serious ethical concern: the potential to spread false or inaccurate information at a massive scale. To address this risk, it's crucial to understand the key difference between two related concepts—disinformation, which is intentionally deceptive, and misinformation, which is inadvertently false.
+
+Both disinformation and misinformation involve the sharing of false or inaccurate information. The critical difference lies in the intent behind it.
+
+A Venn diagram illustrating the concepts of disinformation and misinformation. Disinformation is shown in a purple circle, labeled as 'Intentional,' while misinformation is in a blue circle, labeled 'Inadvertent.' The overlapping area in the middle is labeled 'False or inaccurate information,' indicating the shared characteristic of both types of information.
+Disinformation is the deliberate creation and dissemination of false information with the specific intent to deceive or mislead. It is an intentional act.
+Misinformation is also false, but it is spread without the intent to deceive. This often happens due to carelessness, negligence, or simply not knowing the information is incorrect. It is inadvertent.
+Foundation models, with their powerful ability to generate convincing text and images, can be misused to create and amplify both types of false information.
+
+This isn't a new problem. The use of disinformation as a tactic is ancient. Sun Tzu's The Art of War, written around the 5th century BC, famously states, "All warfare is based on deception." The text goes on to advise military leaders to mislead their enemies by appearing weak when they are strong, inactive when they are using their forces, and far away when they are near.
+
+While the tactic is old, the digital age, social media, and foundation models have made it easier than ever to create and spread false information. Even the creators of these models acknowledge the risk of unintentional falsehoods, or misinformation.
+
+For example, the ChatGPT interface includes a prominent disclaimer: "ChatGPT can make mistakes. Consider checking important information." This is because Large Language Models (LLMs) can generate fluent, convincing language about things that don't actually exist, much like a human writing a fictional story.
+
+A graph showing the relationship between LLM adoption and the potential for misinformation. The y-axis is labeled 'Potential for Misinformation' and the x-axis is labeled 'LLM Adoption.' A blue line indicating a positive slope begins at the origin and rises to the upper right, suggesting that as LLM adoption increases, the potential for misinformation also increases. Icons of a warning symbol and a machine learning graphic are placed at the top left and bottom right corners, respectively.
+As the adoption of LLMs increases, the potential for misinformation also rises. The ability of foundation models to generate realistic fake news articles, deepfake videos, and synthetic voices means people may spread this content without ever realizing it's fake.
+
+To combat these risks, a multi-pronged approach is necessary.
+
+Robust ethical guidelines must be established for the development and deployment of AI.
+Technical safeguards, such as content provenance tools that help trace the origin of AI-generated media, need to be developed and implemented.
+Training and education are essential. The public must be educated on the capabilities and limitations of AI to foster a culture of critical evaluation of all content.
+Adversaries will always seek to exploit new technologies for their own gain. However, by taking proactive measures, we can better protect ourselves and our communities from the potential harms of AI-driven disinformation and misinformation.
+
+The core difference between disinformation and misinformation is intent; disinformation is deliberately created to deceive, while misinformation is spread inadvertently.
+
+
+
+
+
+
+Let's talk about another ethical concern of GenAI, the potential for spreading disinformation and misinformation at scale. Disinformation is a deliberate creation and dissemination of false information with the intent to deceive or mislead. Misinformation, while also false is spread without the intent to misinform, though it may be due to carelessness or negligence. Foundation models, due to their capacity to generate convincing text and images could be misused to create and amplify both. Disinformation as a tactic is not new. In early text he may be familiar with is Sun T'zu the Art of War, which is written in about the fifth century BC. In it, Sun T'zu writes, a warfare is based on deception. The author goes on to say, when we are able to attack, we must seem unable. When using our forces, we must appear inactive. When we are near, we must make the enemy believe we are far away. Needless to say misinformation and disinformation are tactics as old as time. Whether you're hearing a story from a friend, reading a newspaper article or watching a video, it's important to be aware of the potential for disinformation and misinformation. Especially true in the digital age, where the proliferation of social media and the rise of foundation models have made it easier than ever to create and spread false information. Let's talk about misinformation. ChatGPT displays prominently on its website that ChatGPT can make mistakes. Consider checking important information. This statement is true. Large language models can easily create language about things that don't actually exist in the same way that people can write fictional stories. As the adoption of LLMs increases, the potential for misinformation also increases. Moreover, the ability of foundation models to generate realistic content, such as fake news articles, deep fake videos, or synthetic voices may lead to people spreading it without realizing it's fake. This is true whether the original intent was to deceive or not. The potential for harm is significant, which is why it's crucial to instill robust ethical guidelines and develop technical safeguards, such as content providence tools to trace the origin of AI generated content. Most importantly, educating and training everyone on the capabilities and limitations of AI is essential to foster a discerning public that can critically evaluate AI generated content. There will always be adversaries who seek to exploit the vulnerabilities and capabilities of AI for their own gain. However, by taking proactive measures to mitigate the risks of disinformation and misinformation, we can protect ourselves and our communities from the potential harms of these technologies.
