@@ -1,0 +1,38 @@
+Fine-tuning large, pretrained models for new tasks can be computationally expensive. Parameter-Efficient Fine-Tuning (PEFT) offers methods to adapt these models by updating only a small fraction of their parameters, making the process much more efficient while maintaining high performance.
+
+One approach to parameter-efficient fine-tuning is called "Freeze and Tune." This method involves freezing the majority of the model's parameters and only updating a small portion of them, such as the final layer, also known as a "head."
+
+A vertical diagram illustrating a multi-layer neural network. At the top, 'Output' points to 'Layer 5', highlighted in green, followed by four additional layers (Layers 4, 3, 2, and 1) in blue, culminating in 'Input' at the bottom.
+Freeze and tune.
+
+In the diagram above, the layers in blue are frozen, meaning the optimizer will not update their parameters. Only the final layer (Layer 5) will have its parameters adjusted during training. For more flexibility, we can choose to unfreeze additional layers. For instance, we could update the parameters in both Layer 4 and Layer 5, while leaving Layers 1, 2, and 3 frozen.
+
+Allowing more of the model to be updated helps it adapt more closely to the new task. However, this also increases the risk of the model forgetting what it originally learned from its pre-training data. This phenomenon is known as "catastrophic forgetting."
+
+Another powerful PEFT method is Low-Rank Adaptation (LoRA). Imagine we are fine-tuning a large language model and want to focus on adapting only the fourth layer. After fine-tuning, the layer's weights will have changed by a certain amount, which we can call ΔLayer 4.
+
+The key insight of LoRA is to represent this change using a separate, much smaller set of weights. We can freeze the original Layer 4 and attach a new, trainable ΔLayer 4 in parallel. The outputs of both the original and the delta layer are added together before being passed to the next layer (Layer 5).
+
+A diagram comparing two neural network structures. On the left, Layer 4 is highlighted in green as the main layer, leading to Layer 5 and ultimately the Output. On the right, Layer 4 is again noted, connected to Layer 5 and including an additional component labeled ΔLayer 4, illustrating an adjustment to Layer 4. Both diagrams feature inputs flowing from Layer 1 through Layer 5, indicating a multi-layer architecture.
+Low-Rank Adaptation (LoRA)
+
+The benefit of this approach is that the ΔLayer 4 can be constructed with far fewer parameters than the original Layer 4. This is the core idea behind LoRA, which is applicable not only to LLMs but also to other models like Stable Diffusion for image generation.
+
+The efficiency of LoRA comes from a concept in linear algebra. A large square weight matrix, W, of size d x d has d² parameters. Instead of updating this large matrix, LoRA uses two "skinny" matrices, A and B. The product of these two matrices results in a matrix of the same size as W, but the total number of parameters in A and B combined is significantly smaller. This is because they have a small shared dimension, or "rank," r.
+
+A diagram illustrating a reparametrization process in machine learning, featuring blocks labeled 'Pretrained Weights', 'A', 'B', with arrows indicating data flow from an input 'x' to 'h' and outputs 'd' and 'r'. The caption at the bottom references that only 'A' and 'B' are trained.
+During training, the input x is passed to both the original, frozen pretrained weights (W) and the new, trainable LoRA matrices (A and B). Their outputs are then added together.
+
+A mathematical equation illustrating the relationship: A multiplied by B plus W equals the new and improved W, with all components represented in green shapes.
+While this makes the model architecture slightly more complex during training, it trains very quickly because only A and B are updated. After training is complete, the learned changes can be merged back into the original weights for efficient inference. The product of A and B is calculated and added directly to the W matrix, creating a new, improved W. This restores the original model architecture, so there is no extra latency during inference.
+
+We've now restored the original architecture with updated weights, ready for fast and efficient use.
+
+LoRA enables efficient model adaptation by training a small number of new parameters that represent the change in weights, which can then be merged back into the original model for inference.
+
+
+
+
+
+
+One approach to parameter efficient fine-tuning is to freeze a majority of the models parameters and only update a small portion of them, such as a final layer, also known as a head. Here, the layers in blue are frozen so that the optimizer will not update the parameters there. Only the final layer shown on the top by convention will have its parameters adjusted during training. For more flexibility, we may even choose to unfreeze even more parameters of the model and update them as well. Here, we are updating the parameters in layers 4 and 5, leaving one, two, and three alone. By allowing more of the models to be updated, the model can more closely adapt to the new task. However, you also increase the risk of the model forgetting what it had originally learned on the pre training data set. A phenomenon known as catastrophic forgetting. Another method for fine-tuning large language models is to use a technique called low-rank adaptation. Imagine we are fine tuning a large language model and want to focus only on the fourth layer. After fine-tuning, the layer will have changed by an amount, which we'll call Delta Layer 4. Let's draw this another way. We see that we can freeze the original version of Layer 4 and detach a trainable version of Layer 4 that adds its output with the original Layer 4 to the input of Layer 5. Now, what could possibly be the benefit of training this larger model? Well, if the Delta Layer 4 contains much fewer parameters in the original Layer 4, then this is totally worth it. This is the idea behind LoRA or low-rank adaptation, which actually applies to much more than just large language models. For instance, it works with stable diffusion for image generation. Now, how exactly can it contain fewer parameters in Layer 4, you ask? Well, the concept comes from linear algebra. A square matrix W of any size d by d will have d squared entries, which is a lot. Think 100 * 100 = 10,000. Instead of a square matrix, however, you can have two skinny matrices whose product under matrix multiplication is still a square matrix size d by d. However, these two skinny matrices combined have far fewer than 10,000 entries. They contain less information, but tests show that it's possible for them to be good enough to keep track of how much W would change under regular fine-tuning. When we piece it together, we see that both the left and right sides accept input from the same place and add their output together at the end. Now, this model is a little more complicated than the original model, but it trains quickly. After training, we wish to combine W with A and B so that the model can run inferences as quickly as possible. This image shows how we multiply A and B, which are two rectangular matrices, then add them to the matrix W. The new and improved W is what will give or model its new found capabilities that it learned from the new training data. We've completely restored the architecture of the original model, and we're done.
