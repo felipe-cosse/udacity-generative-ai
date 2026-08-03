@@ -1,0 +1,33 @@
+# Google Colab / NVIDIA T4 stack for gen_ai_fundamentals_project_starter.ipynb
+#
+# Install in a fresh T4 runtime, then restart the runtime before importing
+# NumPy, PyTorch, vLLM, or Unsloth:
+#
+#   %pip uninstall -y gradio gradio-client
+#   %pip install --no-cache-dir -r requirements.txt
+#
+# This uses the PyTorch 2.6 / Triton 3.2 generation of vLLM because it is a
+# coherent dependency set for the T4's compute capability (7.5).
+
+accelerate==1.8.1
+bitsandbytes==0.46.1
+cut-cross-entropy==25.1.1
+datasets==3.6.0
+huggingface-hub==0.34.4
+ipython-autotime==0.3.2
+matplotlib==3.10.3
+numpy==2.2.6
+pandas==2.3.1
+peft==0.16.0
+scipy==1.15.3
+sentencepiece==0.2.0
+torch==2.6.0
+torchaudio==2.6.0
+torchvision==0.21.0
+transformers==4.54.0
+triton==3.2.0
+trl==0.19.1
+unsloth==2025.7.8
+unsloth-zoo==2025.7.10
+vllm==0.8.5.post1
+xformers==0.0.29.post2
