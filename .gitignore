@@ -60,10 +60,14 @@ Semantic_Search_with_Vector_Databases_for_RAG%20Subtitles/
 Semantic_Search_with_Vector_Databases_for_RAG%20Videos/
 Prompt_Engineering_for_RAG_Synthesis%20Subtitles/
 Prompt_Engineering_for_RAG_Synthesis%20Videos/
+Implementing_RAG_with_Vector_Databases%20Subtitles/
+Implementing_RAG_with_Vector_Databases%20Videos/
 
 Exercise/
 data/
 results/
+chroma_db/
+demo_chroma_db/
 
 AGENTS.md
 
