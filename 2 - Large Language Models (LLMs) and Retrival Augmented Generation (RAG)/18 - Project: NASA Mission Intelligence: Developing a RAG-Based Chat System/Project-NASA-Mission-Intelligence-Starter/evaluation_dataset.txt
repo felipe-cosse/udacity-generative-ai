@@ -1,0 +1,118 @@
+{
+  "dataset_name": "NASA Mission Intelligence Evaluation Dataset",
+  "version": "1.0",
+  "description": "Source-grounded sample questions and expected responses for testing the NASA Mission Intelligence RAG system.",
+  "answer_policy": "A correct system response may paraphrase the expected response, but it must include the same key facts, remain supported by the retrieved NASA documents, and cite the retrieved source labels when the chat application provides them.",
+  "test_cases": [
+    {
+      "id": "apollo11-overview-001",
+      "category": "overview",
+      "mission": "apollo_11",
+      "question": "What was the primary purpose of the Apollo 11 mission?",
+      "expected_response": "Apollo 11's primary purpose was to land astronauts on the lunar surface and return them safely to Earth.",
+      "source_documents": [
+        "data_text/apollo11/NASA_NTRS_Archive_19710015566_textract_full_text.txt"
+      ],
+      "evidence_locator": "Section 1, Summary"
+    },
+    {
+      "id": "apollo11-crew-002",
+      "category": "crew",
+      "mission": "apollo_11",
+      "question": "Who were the three Apollo 11 crew members, and what were their roles?",
+      "expected_response": "Neil A. Armstrong was the Commander, Michael Collins was the Command Module Pilot, and Edwin E. Aldrin Jr. was the Lunar Module Pilot.",
+      "source_documents": [
+        "data_text/apollo11/NASA_NTRS_Archive_19710015566_textract_full_text.txt"
+      ],
+      "evidence_locator": "Section 1, Summary"
+    },
+    {
+      "id": "apollo11-timeline-003",
+      "category": "timeline",
+      "mission": "apollo_11",
+      "question": "When and from where was Apollo 11 launched, and where and when did the lunar module land?",
+      "expected_response": "Apollo 11 launched from Kennedy Space Center, Florida, at 8:32 a.m. EST on July 16, 1969. The lunar module landed in the Sea of Tranquility at 102 hours, 45 minutes, 40 seconds ground elapsed time.",
+      "source_documents": [
+        "data_text/apollo11/NASA_NTRS_Archive_19710015566_textract_full_text.txt"
+      ],
+      "evidence_locator": "Section 1, Summary"
+    },
+    {
+      "id": "apollo11-technical-004",
+      "category": "technical",
+      "mission": "apollo_11",
+      "question": "Why did the Apollo 11 crew assume manual control during the final lunar descent, and which guidance program did they use?",
+      "expected_response": "The automatic descent path would have ended in a boulder field around a large, sharp-rimmed crater. The crew assumed manual control and selected guidance Program P66 to reduce the descent rate, preserve altitude for landing-site surveillance, and guide the lunar module toward a small, relatively level landing area.",
+      "source_documents": [
+        "data_text/apollo11/NASA_NTRS_Archive_19710015566_textract_full_text.txt"
+      ],
+      "evidence_locator": "Lunar descent discussion of Program P66"
+    },
+    {
+      "id": "apollo13-emergency-005",
+      "category": "emergency",
+      "mission": "apollo_13",
+      "question": "Why was Apollo 13's lunar module used as a lifeboat, and what did the crew do?",
+      "expected_response": "A serious cryogenic-oxygen leak was draining the command and service module's oxygen and electrical capability, leaving less than about 15 minutes of CSM power. The crew powered up Aquarius, began powering down Odyssey, and used the lunar module's systems as a lifeboat.",
+      "source_documents": [
+        "data_text/apollo13/AS13_PAO_textract_full_text.txt"
+      ],
+      "evidence_locator": "Approximately 57 hours, 46 minutes ground elapsed time"
+    },
+    {
+      "id": "apollo13-timeline-006",
+      "category": "timeline",
+      "mission": "apollo_13",
+      "question": "At what mission elapsed time did Commander Jim Lovell repeat, 'Houston, we've had a problem,' and what electrical warning did he report?",
+      "expected_response": "Lovell repeated the report at 55 hours, 55 minutes, 35 seconds mission elapsed time. He reported a MAIN B BUS UNDERVOLT warning. Fred Haise then reported that the crew had heard a large bang associated with the caution-and-warning indication.",
+      "source_documents": [
+        "data_text/apollo13/AS13_TEC_textract_full_text.txt"
+      ],
+      "evidence_locator": "Transcript time 02 07 55 35 through 02 07 56 10"
+    },
+    {
+      "id": "apollo13-technical-007",
+      "category": "technical",
+      "mission": "apollo_13",
+      "question": "How did the Apollo 13 crew adapt command-module lithium-hydroxide canisters to remove carbon dioxide in the lunar module?",
+      "expected_response": "The crew built a mailbox-like scrubber using two command-module lithium-hydroxide canisters, plastic liquid-cooled-garment bags, gray tape, a cardboard lunar-module cue card as a stiffener, and lunar-module suit-return hoses. The arrangement routed cabin air through the canisters to remove carbon dioxide, and later readings showed that it worked.",
+      "source_documents": [
+        "data_text/apollo13/AS13_PAO_textract_full_text.txt"
+      ],
+      "evidence_locator": "Approximately 91 hours, 31 minutes through 96 hours, 3 minutes ground elapsed time"
+    },
+    {
+      "id": "challenger-overview-008",
+      "category": "overview",
+      "mission": "challenger",
+      "question": "What was the prime objective of Challenger mission STS-51L, and how was its payload supposed to reach its final orbit?",
+      "expected_response": "The prime objective was to launch the second Tracking and Data Relay Satellite. Challenger was to deploy it about 10 hours after launch, after which an Inertial Upper Stage would boost it from low Earth orbit toward geosynchronous orbit, about 22,300 miles above Earth.",
+      "source_documents": [
+        "data_text/challenger/107-AAG_STS-51L_Mission_Audio_transcript.txt"
+      ],
+      "evidence_locator": "Audio transcript timestamps 141:45 through 142:14"
+    },
+    {
+      "id": "challenger-timeline-009",
+      "category": "timeline",
+      "mission": "challenger",
+      "question": "What sequence did Mission Control report immediately before and after the Challenger malfunction?",
+      "expected_response": "After liftoff, the engines throttled down to 65 percent and then back up to 104 percent. Shortly after the 'go with throttle' call and the one-minute-fifteen-second flight update, Mission Control announced a major malfunction and loss of downlink. The flight dynamics officer reported that the vehicle had exploded, contingency procedures began, and recovery forces were contacted.",
+      "source_documents": [
+        "data_text/challenger/108-AAG_STS-51L_Mission_Audio_transcript.txt"
+      ],
+      "evidence_locator": "Audio transcript timestamps 145:33 through 147:27"
+    },
+    {
+      "id": "challenger-disaster-analysis-010",
+      "category": "disaster analysis",
+      "mission": "challenger",
+      "question": "Based on NASA's immediate post-accident briefing, had NASA identified the cause of the Challenger explosion?",
+      "expected_response": "No. NASA said it would not speculate about a specific cause from the launch footage. Officials impounded the available data for study, planned a formal review board, and said the data required careful review before conclusions could be drawn.",
+      "source_documents": [
+        "data_text/challenger/108-AAG_STS-51L_Mission_Audio_transcript.txt"
+      ],
+      "evidence_locator": "Audio transcript timestamps 159:30 through 160:17"
+    }
+  ]
+}
