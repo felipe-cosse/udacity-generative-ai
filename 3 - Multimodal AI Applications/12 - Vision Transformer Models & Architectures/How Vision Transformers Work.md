@@ -1,0 +1,48 @@
+Summary
+Vision Transformers tokenize images into patch embeddings and add positional information.
+A CLS token gathers global context for classification and can be inspected via attention.
+Self-attention enables flexible, long-range spatial reasoning but is computationally heavy at high resolutions.
+Optimizations like windowed and hierarchical attention reduce cost while preserving performance.
+Cross-attention extends Vision Transformers to multimodal tasks by linking text and images.
+From Images to Sequences
+Images are divided into fixed-size patches that become tokens, similar to words in text.
+Example: a 224×224 image split into 16×16 patches yields 196 tokens.
+Each patch is flattened and passed through a linear layer to form a fixed-dimensional embedding (for example, 512).
+Treating images as sequences allows the standard Transformer to operate on visual data.
+Patch Embeddings and Positional Information
+Patch embeddings capture local visual content inside each patch.
+Positional encodings provide spatial location, since attention alone is order-agnostic.
+Learned positional embeddings are common. They can capture task-specific spatial layouts.
+Caveat: learned positions may not generalize to new resolutions or aspect ratios. Matching training resolution and aspect ratio at inference time helps avoid quality loss.
+The CLS Token and Global Aggregation
+A special classification token (CLS) is prepended to the patch sequence.
+Through attention, the CLS token aggregates information from all patches across layers.
+For classification, the final CLS state feeds a classification head to produce predictions.
+Attention maps from the CLS token can be inspected to analyze which regions influenced the decision.
+Limitation: a single global token may miss multiple important regions or complex spatial layouts. Some variants add multiple global tokens or alternative pooling strategies.
+Self-Attention for Images
+Queries, keys, and values come from patch embeddings.
+Multi-head attention can capture diverse aspects: color similarity, spatial adjacency, semantic relationships.
+Computational cost grows quadratically with token count, making high-resolution inputs expensive.
+Common efficiency methods:
+Windowed/local attention to restrict interactions within regions.
+Hierarchical structures that combine local and global processing across stages.
+Cross-Attention and Multimodal Uses
+Cross-attention connects different modalities by using queries from one and keys/values from another.
+Examples: visual question answering, image captioning, and text-to-image generation.
+Cross-attention builds interpretable links between words and image regions, aiding analysis of model behavior.
+
+Review
+Turning images into patch sequences allows Transformers to process visual data with the same mechanics used in NLP.
+Positional encodings are essential for spatial understanding; learned positions can be sensitive to resolution changes.
+The CLS token provides a compact global summary but may need augmentation for complex scenes.
+Efficiency techniques are often necessary for production-scale inputs.
+Cross-attention unlocks powerful multimodal applications by aligning text and vision.
+
+
+
+
+
+
+
+Most modern vision models use vision transformers, which adapt the transformer architecture originally designed for language applications. Understanding how vision transformers work will help you make the most of this technology, even if you want to train or find tune one yourself. We assume you're familiar with how transformers work in natural language processing, so we'll focus on the key details for vision applications. The original transformer architectures captures relationships between sequence elements using attention mechanisms. Vision transformers apply the same approach by treating images as sequences of patches, enabling the same attention mechanisms used for text to work with visual data. The key insight is that images can be decomposed into fixed size patches that serve as tokens, just like words in NLP. For example, the original vision transformer implementation divides a 224 by 224 pixel image into 16 by 16 patches arranged regularly in a grid. Each patch is just a square section of the original image. These patches can be arranged in a sequence of 256 elements. Each patch is flattened and projected through a linear layer to create patch embeddings with a fixed dimension, say 512. They will be used throughout the transformer. Let's look at this in more detail. Converting images to sequences begins with patch extraction and embedding. We take the image and divide it in patches. In the example shown here, nine patches. These patches are arranged in a sequence. Each patch is then flattened into a vector and passed through a projection layer. Each patch now acts as a high dimensional token that captures local visual information within that spatial region. The linear projection that creates patch embeddings serves the same role as word embeddings in NLP, mapping raw visual information to a learned representation space. Just like in NLP, we need positional encoding to provide the model with information about each patch spatial location within the original image. The most common approach uses learned position embeddings. You assign a unique embedding vector to each special position and learn this positional embedding vector during training. These embeddings capture task specific spatial patterns, but they may not generalize well to images with different resolutions or aspect ratios than those seen during training. It's important to match the training setup at inference time to avoid performance degradation. Patch embeddings and positional embeddings are then combined into tokens and fed through the transformer blocks, like they would in an NLP transformer. The combination of patch embeddings and positional encoding creates the foundation for all subsequent processing in the vision transformer. The quality of these representations significantly impacts overall model performance and determines what types of visual patterns the model can effectively learn. Vision transformers include a special classification token commonly called the CLS token that serves as a global representation of the entire image. This token is prepended to the sequence of patch tokens and participates in all attention operations throughout the network. The CLS token starts as a learnable embedding that once learned during training, remains the same across all images at inference time. Through the attention mechanism, the CLS token aggregates image specific information from all patch tokens as it goes through the transformer layers. Gradually building up a representation that captures the relevant visual information of the image for the task at hand. For classification tasks, the final state of the CLS token is passed through a classification head to produce class predictions. This approach enables the model to make global decisions based on information aggregated from the entire image rather than relying on any single patch or region. The attention patterns learned by the CLS token provide insights into what parts of the image the model considers important for its decision. You can visualize these attention patterns to understand model behavior, and identify potential issues with training data or model architecture. However, relying on a single token for global representation may limit the model's ability to capture multiple important regions or complex spatial relationships. Some vision transformers variants use multiple global tokens or different aggregation strategies to address these limitations. Self attention in vision transformers works the same as in NLP. Queries, keys, and values are however, derived from patch and beddings. With attention weights, determining information aggregation between patches. Visual attention should be able to focus on spatial patterns, object boundaries for detection tasks, or characteristic spatial arrangements for seen classification. Multi-head attention becomes particularly powerful here with different heads capturing core similarities, spatial adjacencies, or semantic relationships simultaneously. The typical quadratic computational cost of self attention makes it expensive for high resolution images, which require many patches. This has driven vision specific optimizations, like window of attention and hierarchical approaches, that maintain global attention benefits while reducing computational overhead. Cross attention extends the attention mechanism to operate between different types of input, enabling vision transformers to participate in multimodal applications that combine, for example, visual and textural information. In cross attention, queries come from one modality, while keys and values come from another. For example, in a visual question answering system, text queries can focus on relevant patches in the image to find information needed to answer the question. This capability enables sophisticated applications like image captioning, visual question answering, and text to image generation. The attention mechanism provides interpretable connections between textual descriptions and visual regions, helping you understand how the model relates language to visual content. Understanding vision transformers provides the foundation for effectively utilizing these powerful models in production applications while being aware of their computational requirements and data needs.
