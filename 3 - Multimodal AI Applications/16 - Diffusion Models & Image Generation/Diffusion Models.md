@@ -1,0 +1,48 @@
+Diffusion Models
+A Cornerstone of Modern Generative AI
+In the realm of generative AI, diffusion models have emerged as a cornerstone technology. These models are instrumental in generating diverse media, including images, videos, and audio.
+
+The Two-Phase Process: Forward and Backward
+
+At the heart of diffusion models lies a two-phase process: the forward phase and the backward phase.
+
+Forward Phase: Here, we begin with an image and progressively add noise until we are left with nothing but pure noise. It’s a gradual transformation from structured data to randomness.
+Backward Phase: Conversely, in the backward phase, we start from noise and denoise more and more until we're left with a realistic image. This phase essentially reverses the chaos introduced in the forward phase, reconstructing a coherent structure from the noise.
+A diffusion model is unrolled to show how the forward process moves from an image to pure noise, and the backward process goes in the opposite direction from noise to a realistic image
+The forward (up) and backward (down) phases of a diffusion model
+
+Why 'Diffusion' Models?
+
+The term 'diffusion' in these models is inspired by the physical process of diffusion. Imagine introducing a drop of colored liquid into a container of another liquid. Over time, the molecules of the colored liquid randomly move and spread throughout the other liquid, leading to a mix.
+
+
+Hide GIF
+The diffusion process of a purple liquid inside a blue liquid is shown: the purple molecules start clumped in the drop of purple liquid, but soon spread around and mix with the blue molecules due to random motions
+Diffusion of a liquid (purple molecules) into another liquid (blue molecules). The purple molecules start clumped in the drop, but soon start spreading out because of the random motion due to the temperature (Brownian motion) and become mixed with the blue molecules
+
+This process is analogous to how diffusion models manipulate and generate images in a dataset: the forward process "takes" the images from their subspace (for example, the subspace of all images of cars) to the larger space (the space of all images) by gradually adding noise. The backward process essentially "rolls back time" and remove noise gradually until the image is back into the original subspace.
+
+Diffusion of an image dataset. A purple image starts in its subset, but is then moved out of that into the realm of all possible images by the forward diffusion process. The backward diffusion process takes it back in the suspace where it came from.
+Diffusion of an image dataset
+
+The Concept of Denoising Diffusion Probabilistic Models (DDPM)
+
+Introduced by Ho et al. in 2020, DDPMs are a specific class of diffusion models. The process involves taking an image, adding noise through discrete time steps, and eventually reversing this process. The neural network, or DDPM, is trained to perform this reverse process, known as denoising, by predicting and removing the noise added earlier. This repeated process, done with various images, trains the network to generate a wide range of images.
+
+The Necessity of Small Steps in the Reverse Process
+
+An intriguing aspect of this process is the need for many small steps in the reverse phase. The rationale is straightforward: it's much easier to improve an image with slight noise than to reconstruct a clear image from pure randomness. Therefore, the model is trained to progressively transition from noisy to less noisy states, making the task more manageable and the results more precise.
+
+Lately there has been attempts(opens in a new tab) at building diffusion models that can jump from noise to images in one or very few steps(opens in a new tab). Despite these early successes, this remains an open field of research.
+
+Generating New Images: From Noise to A Realistic Image
+
+To generate a new image, we start with random noise and employ the model iteratively to remove the noise gradually. In the initial steps (which remember is time T), the model largely invents as it deals with mere noise. However, as the process progresses, a picture starts emerging, and the model adds finer details until the final, realistic image is achieved at t = 0 (remember we go "back in time").
+
+
+
+
+
+
+
+Diffusion models are the workhorse of modern generative AI. They are used for image, video, and audio generation. Let's get started. At first, we're going to work on our intuition of the process happening within diffusion models, and then we will see how they work in details. Let's see first how a diffusion model is learned, the training phase of a diffusion model. There are two phases, the forward phase and the backward phase. In the forward phase, we start from an image, and we gradually add noise to it until we are left with pure noise. In the backward phase, we start from the noise and we remove it gradually until we are left with a realistic image. We can more easily reason on this process by unrolling it. In the forward phase, we start from an image like the red car in the left, then we deliberately start adding more and more noise in discrete steps until we are left with essentially just noise as shown all the way to the right. Then the idea is to try to reverse this process and gradually remove the noise moving backwards until we are left back with the realistic image. Before we continue, let's see why these models are called diffusion models. Diffusion models are named after the physical process called diffusion. Imagine you have a container filled with a liquid. The molecules of this liquid are represented by the blue dots. Now we add a drop of another liquid to it represented in purple here. The purple liquid molecules, which are initially clustered together, gradually spread throughout the liquid through random motion, eventually leading to a mix of the two colors. This is the physical process called diffusion. This process is similar to how diffusion models work with images in a data set. Consider a dataset containing, for example, pictures of cars. These are just matrices of pixels for a computer. These car images are part of a larger universe of all possible images, again, represented by matrices of the same size. In the analogy with the diffusion process with the liquids, our car images dataset is like the purple liquid in our previous line, and the vast space of all possible images is like the blue liquid. Each image in our dataset is comparable to a molecule in the purple liquid. Introducing random noise to these images is akin to the process of diffusion in our liquid analogy. By adding noise, we're gradually moving each image or molecule away from the specific subset of realistic car images and into the broader realm of all potential images. This mimicking of diffusion spreads the molecules, which are the images, from their concentrated subspace into the surrounding space, just like the purple liquid molecules dispersed into the blue liquid. The reverse process takes back our image molecule into the subspace of car images. So in a way, reversing the diffusion process is like trying to recreate the purple drop from the mixed liquid, going back in time. We can now describe a specific class of diffusion models called Denoising Diffusion Probabilistic Model, or DDPM for short, and how we can train them to generate images. We take an image, and we perform the diffusion process by gradually adding noise to it in subsequent discrete steps called time steps from zero to n. At t=n, the image is fully diffused and is essentially just random noise. Then we take a neural network, our DDPM, and we use it to reverse the process. The reverse process, called denoising, starts at t=n and moves, so to speak, backwards in time. At each step, the network takes, as input, the current noisy image, and it must predict the noise we should remove from it. After n reverse steps, we're back at t=0, and if the model works very well, we end up back at our original image. We repeat this process a very large number of times with a variety of input images to teach the network to generate a variety of images. Now one could ask a very good question at this point. Why do we need to do this reverse process in many small steps instead of one big step? There are profound mathematical reasons for this that can be explained and understood in the context of the diffusion process. However, we can gain an intuition by just considering the two situations. If we need to go from a slightly corrupted image to a less corrupted image, that is relatively easy. We can easily imagine how to slightly improve the noisy image to make it less noise. However, if we start from pure random noise, it is very hard to imagine what the completely denoised image will look like. We can understand that, having a model that solves the first problem, going from slightly noisy images to slightly better images, is going to be a lot easier than having a model that can go all the way in one shot. Now we have an intuition of how the diffusion model is trained, which means how it learns to invert the diffusion process. If we want to generate a new image, we start from some noise, and we use the model iteratively over several steps to gradually remove more and more noise until we are left with the realistic image. During the first few steps, the model is largely inventing, as the image is just noise and, hence, contains very little information. However, as we make progress, a picture starts to emerge, and the model adds more and more details until we get to the final stage.
