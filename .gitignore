@@ -121,6 +121,7 @@ data/
 results/
 chroma_db/
 demo_chroma_db/
+weights/
 
 AGENTS.md
 
